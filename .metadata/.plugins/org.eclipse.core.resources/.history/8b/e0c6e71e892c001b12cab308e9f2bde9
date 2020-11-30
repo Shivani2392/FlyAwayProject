@@ -1,0 +1,31 @@
+package com.flightbooking.controller;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class AdminRegistrationServlet
+ */
+public class AdminRegistrationServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    
+    public AdminRegistrationServlet() {
+        super();
+       
+    }
+
+	
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			
+	String adminname=request.getParameter("adminname");
+	String adminemail=request.getParameter("mail");
+	String adminpassword=request.getParameter("psw");
+	
+	}
+
+}

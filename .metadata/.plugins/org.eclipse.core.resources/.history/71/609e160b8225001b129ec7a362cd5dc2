@@ -1,0 +1,137 @@
+package com.flightbooking.controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.SQLQuery;
+import com.flightbooking.entities.FLIGHTMASTER;
+
+/**
+ * Servlet implementation class HomePageServlet
+ */
+public class HomePageServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public HomePageServlet() {
+        super();
+        
+    }
+
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//String username = request.getParameter("username");
+      // String radio = request.getParameter("submit");
+		String value = request.getParameter("tripwayoneortwo");
+		String value1 = request.getParameter("From");
+		String value2 = request.getParameter("To");
+		String value3 = request.getParameter("datepicker");
+		String value4 = request.getParameter("datepickerreturnjourney");
+		String value5 = request.getParameter("Adult");
+		String value6 = request.getParameter("Child");
+		String submit = request.getParameter("submit");
+		System.out.println(value);
+		
+		PrintWriter pw=response.getWriter();
+		//pw.println("<h1 style='text-align:center;'><a href=`all_availableflights`></>");
+       // System.out.println("username: " + username);
+        pw.println("in servlet");
+       
+        Configuration config = new Configuration();
+        config.configure("hibernate.cfg.xml");
+        SessionFactory sessionFactory = config.addAnnotatedClass(com.flightbooking.entities.FLIGHTMASTERclass).buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        
+      // Session s=SessionFactoryProvider.getFactory().openSession();
+        Transaction tx=session.beginTransaction();
+        //List listofflights=session.createQuery("select * from FLIGHTMASTERDATA where SOURCENAME = '" + value1 + "' AND DESTINATION = '"+value2 +"'").getResultList();
+		/*
+		 * String sql =
+		 * "select FLIGHTID from FLIGHTMASTER where SOURCENAME='Delhi' AND DESTINATION='Tokyo'"
+		 * ; SQLQuery query = session.createSQLQuery(sql);
+		 * query.addEntity(FLIGHTMASTER.class); List results = query.list(); //where SOURCENAME='Delhi' AND DESTINATION='Tokyo'
+		 */        
+        
+        List listofflights=session.createQuery("select m.FLIGHTID from FLIGHTMASTER m").getResultList();
+        tx.commit();
+		/*
+		 * List<StudentDetails> listOfStudent = s.
+		 * createQuery("from StudentDetails u where u.stdLocation = 'Bangalore' OR u.stdName = 'Tanuja'"
+		 * ).getResultList();
+		 * 
+		 * // Travserse through the list for(StudentDetails theStudent : listOfStudent)
+		 * { System.out.println(theStudent); }
+		 */
+		/*
+		 * if(listofflights == null) { System.out.println("I am Null"); }
+		 */
+        
+        // System.out.println("Size : "+listofflights.size());
+        
+        //pw.print("<a href='welcomehere'>View Details</a>");
+		/*
+		 * String htmlRespone = "<html>"; htmlRespone += "<h2>Your username is: " +
+		 * username + "</h2>"; htmlRespone += "</html>";
+		 * 
+		 * writer.println(htmlRespone);
+		 */
+		
+		/*
+		 * response.setContentType("application/json");
+		 * response.setCharacterEncoding("UTF-8");
+		 * 
+		 * ServletOutputStream out = response.getOutputStream();
+		 * 
+		 * 
+		 * try {
+		 * 
+		 * URL url = new URL ("https://gorest.co.in/public-api/users");
+		 * HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+		 * conn.setRequestMethod("GET"); conn.setRequestProperty("Accept",
+		 * "application/json");
+		 * 
+		 * if (conn.getResponseCode() != 200) { throw new
+		 * RuntimeException("Failed : HTTP error code : " + conn.getResponseCode()); }
+		 * 
+		 * BufferedReader br = new BufferedReader(new InputStreamReader(
+		 * (conn.getInputStream())));
+		 * 
+		 * String output; System.out.println("Output from Server .... \n"); while
+		 * ((output = br.readLine()) != null) { //pw.print(output); out.print(output);
+		 * System.out.println(output); //pw.flush(); }
+		 * 
+		 * 
+		 * conn.disconnect();
+		 * 
+		 * } catch (MalformedURLException e) {
+		 * 
+		 * e.printStackTrace();
+		 * 
+		 * } catch (IOException e) {
+		 * 
+		 * e.printStackTrace();
+		 * 
+		 * }
+		 */
+
+ 
+        // do some processing here...
+        //pw.close();
+         
+		//doGet(request, response);
+	}
+
+}

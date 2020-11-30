@@ -1,0 +1,37 @@
+package com.flightbooking.controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class PaymentService
+ */
+public class PaymentService extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	private static final String CLIENT_ID = "AdVByDBLXncGONZ3hKGtyXIgllHm6ZSLxFmV0ajJyJwZH9dfpIOyLlH9TIG2rvQYPmSnk_AtC_q6cdOG";
+    private static final String CLIENT_SECRET = "EB4z0JMxDDx-6PmcEW_tNY0hX92FuN2xszzGiWaC7YvM0Ic_22JCeuMtkPu92ES5omvVIKLAVuD2jz8Q";
+    private static final String MODE = "sandbox";
+    public PaymentService() {
+        super();
+        
+    }
+
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
+		PrintWriter pw = response.getWriter();
+		
+		pw.println("in servlet");
+		
+			
+		
+	}
+	
+
+}

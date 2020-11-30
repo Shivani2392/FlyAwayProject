@@ -1,0 +1,69 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    <%@page import="com.flightbooking.entities.UserRegistration"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Flight Details</title>
+</head>
+<body>
+<h3>Confirm Personal information</h3>
+<%
+UserRegistration user = (UserRegistration)request.getAttribute("pojo");
+out.println("Name : ");
+out.println(user.getFullName());
+out.println("Email : ");
+out.println(user.getEmail());
+out.println("Phone No : ");
+out.println(request.getParameter("source"));
+%>
+
+
+
+<h3>Confirm Flight Information</h3>
+<%
+out.println("From : ");
+out.println(request.getParameter("source"));
+%>
+<br>
+<%
+out.println("To : ");
+out.println(request.getParameter("dest"));
+%>
+<br>
+<%
+out.println("Flight Name : ");
+out.println(request.getParameter("name"));
+%>
+<br>
+<%
+out.println("Ticket price : ");
+out.println(request.getParameter("price"));
+%>
+<br>
+<%
+out.println("Flight Id : ");
+out.println(request.getParameter("id"));
+%>
+<br>
+<%
+out.println("Journey Date : ");
+out.println(request.getParameter("date"));
+%>
+<br>
+<%
+out.println("Flight time : ");
+out.println(request.getParameter("time"));
+%>
+<br>
+%>
+
+
+
+<h1>Proceed to Payment</h1>
+<input type="submit" value="Payment	" name="Payment"></input>
+</body>
+</html>

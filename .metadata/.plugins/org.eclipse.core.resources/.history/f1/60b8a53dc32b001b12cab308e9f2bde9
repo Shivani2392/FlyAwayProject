@@ -1,0 +1,13 @@
+package chcekp;
+
+public class asd {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String s = "HI";
+		String sBookURL = "<a href=\"login.jsp?source=\"" + flightM.getSOURCENAME() + "\"&dest=\"" + flightM.getDESTINATION() + "\"&date=\"" + flightM.getsDate() + "\"&time=\"" + flightM.getFLIGHTTIME() + "\"&name=\"" + flightM.getFLIGHTNAME() + "\"&id=\"" + flightM.getsFlightId() + "\"&ticketp=\"" + flightM.getTICKETP() + "\"\">Click here</a>";
+		System.out.println(sBookURL);
+		
+	}
+
+}

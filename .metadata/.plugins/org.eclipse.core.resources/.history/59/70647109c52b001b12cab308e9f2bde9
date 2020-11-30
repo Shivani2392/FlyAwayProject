@@ -1,0 +1,21 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Flight Details</title>
+</head>
+<body>
+<h3>Confirm Personal and Flight Information</h3>
+<%
+out.println("Ticket price : ");
+out.println(request.getParameter("price"));
+%>
+
+
+
+<h1>Proceed to Payment</h1>
+<input type="submit" value="Payment	" name="Payment"></input>
+</body>
+</html>

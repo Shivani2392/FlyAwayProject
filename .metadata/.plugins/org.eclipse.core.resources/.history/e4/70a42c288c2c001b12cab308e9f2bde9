@@ -1,0 +1,73 @@
+package com.flightbooking.controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import com.flightbooking.entities.AdminRegistrationEntity;
+import com.flightbooking.entities.UserRegistration;
+
+/**
+ * Servlet implementation class AdminRegistrationServlet
+ */
+public class AdminRegistrationServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    
+    public AdminRegistrationServlet() {
+        super();
+       
+    }
+
+	
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			
+	String adminname=request.getParameter("adminname");
+	String adminemail=request.getParameter("mail");
+	String adminpassword=request.getParameter("psw");
+	
+	
+	PrintWriter pw3 = response.getWriter();
+	
+	
+	Configuration config = new Configuration();
+	config.configure("hibernate.cfg.xml");
+	SessionFactory sessionFactory = config.addAnnotatedClass(com.flightbooking.entities.AdminRegistrationEntity.class)
+			.buildSessionFactory();
+	//get session object from session factory
+	Session session1 = sessionFactory.openSession();
+	
+	//Open transaction
+	
+	Transaction tx = session1.beginTransaction();
+	
+//Register new Admin
+	List<String> emailArrcheck=	session1.createQuery("select u.ADMINEMAIL from AdminRegistrationEntity u where u.ADMINEMAIL = '"+adminemail+"'").getResultList();
+	//String un=dbusername.toString();
+	if(emailArrcheck!=null && emailArrcheck.size() >= 1)
+	{
+		pw3.println("Email is already Exist!!");
+		request.getRequestDispatcher("ErrorinAdminregistration.jsp").forward(request, response);			
+	}
+	else
+	{
+		AdminRegistrationEntity adminregistration=new AdminRegistrationEntity(adminname,adminpassword, adminemail);
+		session1.save(adminregistration);
+		tx.commit();
+	
+	}
+	pw3.println("Admin Registered succussfully!!......Admin can login now !!");
+	request.getRequestDispatcher("/AdminLogin.jsp");
+}
+}

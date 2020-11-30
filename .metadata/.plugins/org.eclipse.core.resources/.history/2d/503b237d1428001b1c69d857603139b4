@@ -1,0 +1,30 @@
+package com.flightbooking.entities;
+
+public class FlightMasterPojo {
+
+	String sFlightId  = null;
+	String sFlightName = null;
+	String FLIGHTNAME;
+	String SOURCENAME;
+	String DESTINATION;
+	String TICKETP;
+	String 
+	
+	public String getsFlightId() {
+		return sFlightId;
+	}
+	public void setsFlightId(String sFlightId) {
+		this.sFlightId = sFlightId;
+	}
+	
+		
+	public String getsFlightName() {
+		return sFlightName;
+	}
+	public void setsFlightName(String sFlightName) {
+		this.sFlightName = sFlightName;
+	}
+	
+	
+	
+}

@@ -1,0 +1,13 @@
+package com.simplilearn.w.training;
+
+import java.util.Scanner;
+
+public class MenueDriven {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		
+
+	}
+
+}

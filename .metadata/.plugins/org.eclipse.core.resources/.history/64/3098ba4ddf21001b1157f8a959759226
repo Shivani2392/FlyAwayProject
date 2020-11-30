@@ -1,0 +1,69 @@
+package com.simplilearn.w.training;
+
+import java.util.Scanner;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+public class UpdateStudent {
+
+	static SessionFactory theFactory=null;
+
+		
+	theFactory=SessionFactory1.SessionFactorymethod();
+
+//			Get the Session
+			Session theSession = theFactory.getCurrentSession();
+			
+			try {
+				
+//				Start the transaction
+				theSession.beginTransaction();
+				
+				Scanner scan = new Scanner(System.in);
+				
+				System.out.println("Please enter the id");
+				int id = scan.nextInt();
+				scan.nextLine();
+				
+				StudentDetails theStudent = theSession.get(StudentDetails.class, id);
+//				
+				System.out.println("Student's current details: " + theStudent);
+//				
+				System.out.println("Enter Name");
+				String stdName = scan.nextLine();
+//				
+				System.out.println("Enter Location");
+				String stdLocation = scan.nextLine();
+				
+//				Update name, location of the particular student
+				theStudent.setStdName(stdName);
+				theStudent.setStdLocation(stdLocation);
+				
+//				System.out.println("Enter New Location for all Students");
+//				String newLocation = scan.nextLine();
+//				
+//				
+//				Another way of updating :
+//				theSession.createQuery("update StudentDetails set stdLocation = '" + newLocation + "'").executeUpdate();
+				
+				
+				
+				
+				
+//				Commit transaction
+				theSession.getTransaction().commit();
+				
+				
+				
+				
+			}
+			finally {
+				theFactory.close();
+			}
+
+
+	
+
+}

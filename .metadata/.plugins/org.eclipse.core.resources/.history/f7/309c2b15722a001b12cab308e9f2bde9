@@ -1,0 +1,20 @@
+package com.flightbooking.entities;
+
+public class UserRegistrationPojo {
+	
+	 String UserId;
+	String UserName;
+	String Address;
+	String Email;
+	String Password;
+	
+	
+	public UserRegistrationPojo() {
+		
+		
+	}
+	
+	
+	
+
+}

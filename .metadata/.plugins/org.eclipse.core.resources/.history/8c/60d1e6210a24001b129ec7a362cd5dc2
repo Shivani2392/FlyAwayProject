@@ -1,0 +1,10 @@
+/**
+ * 
+ */
+ 
+ let btnAdd=document.querySelector(`add`);
+ let btnSubstraction=document.querySelector(`sub`);
+ let btnAdd=document.querySelector(`input`);
+ 
+ btnAdd.addEventListner(`click`,()=>{
+ input.value=parseInt(input.value)+1;});

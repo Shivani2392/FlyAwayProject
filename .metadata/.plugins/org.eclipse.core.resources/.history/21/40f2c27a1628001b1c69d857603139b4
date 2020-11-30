@@ -1,0 +1,57 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    
+<%@page import="com.flightbooking.entities.FlightMasterPojo"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Flight results</title>
+</head>
+<body>
+<h3> Flight information: </h3>
+<table width="59%" border="1">
+    <thead>
+    <tr>
+        <td>Volume</td>
+        <td>XmlTitle</td>
+        <td>getYear</td>
+    </tr>
+    </thead>
+    <tbody>
+    <%
+        Journal journal = Journal.findByCode("antipoda");
+        List<Issue> normalIssues = journal.getIssuesOfType(IssueType.NORMAL);
+        for (Issue issue : normalIssues) {
+
+            out.print(String.format("<tr>" +
+                                        "<td>%s</td>" +
+                                        "<td>%s</td>" +
+                                        "<td>%d</td>" +
+                                    "</tr>",
+                    issue.getVolume(),issue.getXmlTitle(),issue.getYear()));
+        }
+
+        out.flush();
+    %>
+    </tbody>
+</table>
+<% List<FlightMasterPojo> flights = (ArrayList<FlightMasterPojo>)request.getAttribute("flightPojos");
+ 
+    for(FlightMasterPojo flightM : flights)
+    {
+        out.print("Source: " + flightM.getSOURCENAME());
+        out.print("<br/>");
+        out.print("Name: " + flightM.getFLIGHTNAME());
+        out.print("<br/>");
+        out.print("Destination: " + flightM.getDESTINATION());
+        
+        out.print("<br/>");
+        out.print("<br/>");
+    }
+ 
+%>
+</body>
+</html>

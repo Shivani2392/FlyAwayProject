@@ -1,0 +1,76 @@
+package com.flightbooking.controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import com.flightbooking.entities.UserRegistration;
+
+
+public class SignUpServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+  
+    public SignUpServlet() {
+        super();
+        
+    }
+
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String userName=request.getParameter("uname");
+		String userID=request.getParameter("id");
+		String userAddress=request.getParameter("Add");
+		String userPSWD=request.getParameter("psw");
+		String userMail=request.getParameter("mail");
+
+		PrintWriter pw3 = response.getWriter();
+		
+		
+		Configuration config = new Configuration();
+		config.configure("hibernate.cfg.xml");
+		SessionFactory sessionFactory = config.addAnnotatedClass(com.flightbooking.entities.UserRegistration.class)
+				.buildSessionFactory();
+		//get session object from session factory
+		Session session1 = sessionFactory.openSession();
+		
+		//Open transaction
+		
+		Transaction tx = session1.beginTransaction();
+		
+		//Register new User in DB
+		
+		List<String> dbusername=	session1.createQuery("select u.UserName from UserRegistration u where u.UserName = '"+userName+"' AND u.Password='"+ "'").getResultList();
+		String un=dbusername.toString();
+		if(dbusername.equals(un))
+		{
+			
+			pw3.println("UserName is already Exist!!");		
+		}
+		else 
+		{
+			
+			UserRegistration userregistration=new UserRegistration(userID, userName, userAddress, userMail, userPSWD);
+			session1.save(userregistration);
+			
+			pw3.println("User is Registered successfully please login to book Flight Ticket");
+			
+			request.getRequestDispatcher("login.jsp").forward(request, response);
+			
+		}
+			
+		
+	}
+
+}

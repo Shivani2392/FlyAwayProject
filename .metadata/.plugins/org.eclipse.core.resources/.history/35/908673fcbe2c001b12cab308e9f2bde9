@@ -1,0 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="ResetPassowrd" method="post">
+
+ 	  <label for="username"><b>User Name : </b></label><br>
+      <input type="text" placeholder="Enter Username" name="username"><br>
+      <label for="oldpassword"><b>Old Password : </b></label><br>
+      <input type="text" placeholder="Enter Old Password" name="oldpassword"><br>
+      <label for="resetownpassword"><b>New Password : </b></label><br>
+      <input type="text" placeholder="Enter New Password" name="newpassword"><br>
+      <input type="submit" value="ResetPassword">
+</form>
+
+
+
+</form>
+</body>
+</html>

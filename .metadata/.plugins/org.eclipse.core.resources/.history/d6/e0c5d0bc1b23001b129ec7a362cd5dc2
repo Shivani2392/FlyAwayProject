@@ -1,0 +1,69 @@
+package lovetocode.SpringDemo;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+        System.out.println( "Hello World!" );
+        
+        
+        try {
+
+        	URL url = new URL ("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/referral/v1.0/India/rupees/ISO%20locale/Delhi/Tokyo/yyyy-mm-dd/%7Binboundpartialdate%7D?shortapikey=ra66933"
+        			+ "         236979928&apiKey=%7Bshortapikey%7D");
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty("Accept", "application/json");
+            .header("x-rapidapi-key", "6252ad59f9msh246d71184830e5ap1e7a80jsnd779bb183ba0")
+    		.header("x-rapidapi-host", "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com")
+            conn.setRequestProperty("x-rapidapi-key", "6252ad59f9msh246d71184830e5ap1e7a80jsnd779bb183ba0");
+            conn.setRequestProperty("x-rapidapi-host", "application/json");
+            
+            if (conn.getResponseCode() != 200) {
+                throw new RuntimeException("Failed : HTTP error code : "
+                        + conn.getResponseCode());
+            }
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(
+                (conn.getInputStream())));
+
+            String output;
+            System.out.println("Output from Server .... \n");
+            while ((output = br.readLine()) != null) {
+                System.out.println(output);
+            }
+
+            conn.disconnect();
+
+          } catch (MalformedURLException e) {
+
+            e.printStackTrace();
+
+          } catch (IOException e) {
+
+            e.printStackTrace();
+
+          }
+
+        }
+  /*       HTTPURrequest = HttpRequest.newBuilder()
+        		.uri(URI.create("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/referral/v1.0/India/rupees/ISO%20locale/Delhi/Tokyo/yyyy-mm-dd/%7Binboundpartialdate%7D?shortapikey=ra66933236979928&apiKey=%7Bshortapikey%7D"))
+        		.header("x-rapidapi-key", "6252ad59f9msh246d71184830e5ap1e7a80jsnd779bb183ba0")
+        		.header("x-rapidapi-host", "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com")
+        		.method("GET", HttpRequest.BodyPublishers.noBody())
+        		.build();
+        HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+        System.out.println(response.body()); */
+    }
+}

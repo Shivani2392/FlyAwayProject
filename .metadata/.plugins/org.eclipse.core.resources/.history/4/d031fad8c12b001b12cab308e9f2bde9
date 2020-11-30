@@ -1,0 +1,37 @@
+<%@page import="org.hibernate.Session"%>
+<%@page import="org.hibernate.SessionFactory"%>
+<%@page import="org.hibernate.cfg.Configuration"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Login</title>
+</head>
+
+<body>
+   <script>
+   
+   function signUpFunction() {
+	   window.location = 'UserResgistrationPage.jsp'; 
+	 }
+   
+   </script>
+   <form action="LoginCredentialValidation" method="post">
+      <label for="uname"><b>Username : </b></label><br>
+      <input type="text" placeholder="Enter Registered Email" name="uname" required>
+      <br><br>
+      <label for="psw"><b>Password : 	</b></label><br>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+      <br><br><br>
+      
+      <input type="hidden" name="source" value="<%request.getParameter()%>">
+
+      <button type="submit">Login</button>
+      <button onclick="signUpFunction()">SignUp</button>
+
+      
+   </form>
+</body>
+</html>

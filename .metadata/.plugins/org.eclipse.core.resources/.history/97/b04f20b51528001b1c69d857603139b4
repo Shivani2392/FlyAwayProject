@@ -1,0 +1,31 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    
+<%@page import="com.flightbooking.entities.FlightMasterPojo"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Flight results</title>
+</head>
+<body>
+<h3> Flight information: </h3>
+<% FlightMasterPojo flight= (FlightMasterPojo) request.getAttribute("flightPojo");%>
+your choice: <%= flight.getsFlightId()%>
+<% List<Student> students = (ArrayList<Student>)request.getAttribute("flightPojos");
+ 
+    for(Student student : students)
+    {
+        out.print("Id: " + student.getId());
+        out.print("<br/>");
+        out.print("Name: " + student.getName());
+        out.print("<br/>");
+        out.print("Age: " + student.getAge());
+        
+        out.print("<br/>");
+        out.print("<br/>");
+    }
+ 
+%>
+</body>
+</html>

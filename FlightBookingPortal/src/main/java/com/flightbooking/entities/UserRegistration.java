@@ -1,0 +1,70 @@
+package com.flightbooking.entities;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "UserRegistrationInfo")
+public class UserRegistration {
+		
+	@Column(name = "FULLNAME")
+	String FullName;
+	
+	@Column(name = "PHONENO")
+	Integer PhoneNo;
+	
+	@Id
+	@Column(name = "EMAIL")
+	String Email;
+	
+	@Column(name = "PASSWORD")
+	String Password;
+	
+	public UserRegistration() {
+	}
+	
+
+	public UserRegistration(String sFullName , Integer sPhoneNo, String email, String password) {
+		super();
+		FullName = sFullName;
+		PhoneNo = sPhoneNo;
+		Email = email;
+		Password = password;
+	}
+
+	public String getFullName() {
+		return FullName;
+	}
+
+	public void setFullName(String fullName) {
+		FullName = fullName;
+	}
+
+	public Integer getPhoneNo() {
+		return PhoneNo;
+	}
+
+	public void setPhoneNo(Integer phoneNo) {
+		PhoneNo = phoneNo;
+	}
+
+	public String getEmail() {
+		return Email;
+	}
+
+	public void setEmail(String email) {
+		Email = email;
+	}
+
+	public String getPassword() {
+		return Password;
+	}
+
+	public void setPassword(String password) {
+		Password = password;
+	}
+
+
+}

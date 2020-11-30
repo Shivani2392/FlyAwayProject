@@ -1,0 +1,93 @@
+package com.flightbooking.controller;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class HomePageServlet
+ */
+public class HomePageServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public HomePageServlet() {
+        super();
+        
+    }
+
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//String username = request.getParameter("username");
+      // String radio = request.getParameter("submit");
+		String value = request.getParameter("tripwayoneortwo");
+		String value1 = request.getParameter("From");
+		String value2 = request.getParameter("To");
+		String value3 = request.getParameter("Travel Date");
+		String value4 = request.getParameter("ReturnDate");
+		String value5 = request.getParameter("Adult");
+		String value6 = request.getParameter("Child");
+		String submit = request.getParameter("submit");
+		System.out.println(value);
+		
+		PrintWriter pw=response.getWriter();
+       // System.out.println("username: " + username);
+        pw.println("in servlet");
+        //pw.print("<a href='welcomehere'>View Details</a>");
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+
+        try {
+
+        	URL url = new URL ("https://gorest.co.in/public-api/users/123");
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty("Accept", "application/json");
+            
+            if (conn.getResponseCode() != 200) {
+                throw new RuntimeException("Failed : HTTP error code : "
+                        + conn.getResponseCode());
+            }
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(
+                (conn.getInputStream())));
+
+            String output;
+            System.out.println("Output from Server .... \n");
+            while ((output = br.readLine()) != null) {
+            	pw.print(output);
+            	pw.flush();
+            }
+            
+            
+            conn.disconnect();
+
+          } catch (MalformedURLException e) {
+
+            e.printStackTrace();
+
+          } catch (IOException e) {
+
+            e.printStackTrace();
+
+          }
+
+ 
+        // do some processing here...
+        pw.close();
+         
+		//doGet(request, response);
+	}
+
+}

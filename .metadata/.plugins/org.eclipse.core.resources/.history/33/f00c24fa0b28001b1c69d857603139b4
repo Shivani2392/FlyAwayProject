@@ -1,0 +1,152 @@
+package com.flightbooking.controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.SQLQuery;
+import com.flightbooking.entities.FLIGHTMASTER;
+
+/**
+ * Servlet implementation class HomePageServlet
+ */
+public class HomePageServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public HomePageServlet() {
+        super();
+        
+    }
+
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//String username = request.getParameter("username");
+      // String radio = request.getParameter("submit");
+		String value = request.getParameter("tripwayoneortwo");
+		String value1 = request.getParameter("From");
+		String value2 = request.getParameter("To");
+		String value3 = request.getParameter("TravelDate");
+		String value4 = request.getParameter("datepickerreturnjourney");
+		String value5 = request.getParameter("Adult");
+		String value6 = request.getParameter("Child");
+		String submit = request.getParameter("submit");
+		System.out.println(value);
+		
+		PrintWriter pw=response.getWriter();
+		//pw.println("<h1 style='text-align:center;'><a href=`all_availableflights`></>");
+       // System.out.println("username: " + username);
+        pw.println("in servlet");
+        System.out.println("KUSHAL" + value3);
+        //System.exit(0);
+        
+        String[] date = value3.split("-");
+        String syear = date[0];
+        int iYear = Integer.parseInt(syear);
+        String sMonth = date[1];
+        int iMonth = Integer.parseInt(sMonth);
+        String sDay = date[2];
+        int iDay = Integer.parseInt(sDay);
+        
+        System.out.println(syear + " " + sMonth + " " + sDay);
+        
+        Date date1;
+        String day = "";
+		Date date2 = new GregorianCalendar(iYear,iMonth-1,iDay).getTime();
+		SimpleDateFormat sdf1=new SimpleDateFormat("EE");
+		day = sdf1.format(date2);
+		System.out.println("NEW : "  + day);
+        
+        //req comes on server(servlet) from here go to database
+        Configuration config=new Configuration();
+        config.configure("hibernate.cfg.xml");
+        SessionFactory sessionFactory = config.addAnnotatedClass(com.flightbooking.entities.FLIGHTMASTER.class).buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        
+      // Session s=SessionFactoryProvider.getFactory().openSession();
+        Transaction tx=session.beginTransaction();
+        //List listofflights=session.createQuery("select * from FLIGHTMASTERDATA where SOURCENAME = '" + value1 + "' AND DESTINATION = '"+value2 +"'").getResultList();
+		/*
+		 * String sql =
+		 * "select FLIGHTID from FLIGHTMASTER where SOURCENAME='Delhi' AND DESTINATION='Tokyo'"
+		 * ; SQLQuery query = session.createSQLQuery(sql);
+		 * query.addEntity(FLIGHTMASTER.class); List results = query.list(); //where SOURCENAME='Delhi' AND DESTINATION='Tokyo'
+		 */        
+        FLIGHTMASTER toback = null;
+        try {
+        	System.out.println(value1 + " " + value2);
+        	List<FLIGHTMASTER> listofflights=session.createQuery("from FLIGHTMASTER m where m.SOURCENAME = '" + value1 + "' AND m.DESTINATION = '"+value2 +"' AND m.FLIGHTSCHEDULE like '%" + day + "%'").getResultList();
+               
+        	if(listofflights != null && listofflights.size() > 0)
+        	{
+        		
+        		
+        		
+        		
+        		
+        		
+        		System.out.println("Size of result" + listofflights.size());
+        		
+        		toback = listofflights.get(0);
+        		
+        		for(int i=0;i<listofflights.size();i++)
+        		{
+        			FLIGHTMASTER mm = listofflights.get(i);
+        		
+        			
+        			
+        			
+        			
+        			
+        			
+        			pw.println("Flight ID : "+mm.getFLIGHTID());
+        			System.out.println(mm.getFLIGHTID());
+           			pw.println("FLIGHT NAME : "+mm.getFLIGHTNAME());
+        			System.out.println(mm.getFLIGHTNAME());
+           			pw.print("FLIGHT TIME : "+mm.getFLIGHTTIME());
+        			System.out.println(mm.getFLIGHTTIME());
+        			pw.println(day);
+        			System.out.println(day);
+        			pw.println("TICKET PRICE : "+mm.getTICKETP());
+        			System.out.println(mm.getTICKETP());
+        			
+        		}
+            }
+        	else
+        	{
+    			pw.println("No flights found!!!!");
+    			System.out.println(day);
+       		
+        	}
+        	
+        	tx.commit();
+		} catch (Exception e) {
+			
+			System.out.println(e.getMessage());
+		}
+        
+        request.setAttribute("flight", toback);
+        request.getRequestDispatcher("home.jsp").forward(request, response);
+		
+		//doGet(request, response);
+	}
+
+}

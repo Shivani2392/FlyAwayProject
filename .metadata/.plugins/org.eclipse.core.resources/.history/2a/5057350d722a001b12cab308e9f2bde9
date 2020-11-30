@@ -1,0 +1,55 @@
+package com.flightbooking.entities;
+
+public class UserRegistrationPojo {
+	
+	 String UserId;
+	String UserName;
+	String Address;
+	String Email;
+	String Password;
+	
+	
+	public UserRegistrationPojo() {
+		
+		
+	}
+	
+	public String getUserId() {
+		return UserId;
+	}
+	public void setUserId(String userId) {
+		UserId = userId;
+	}
+	public String getUserName() {
+		return UserName;
+	}
+	public void setUserName(String userName) {
+		UserName = userName;
+	}
+	public String getAddress() {
+		return Address;
+	}
+	public void setAddress(String address) {
+		Address = address;
+	}
+	public String getEmail() {
+		return Email;
+	}
+	public void setEmail(String email) {
+		Email = email;
+	}
+	public String getPassword() {
+		return Password;
+	}
+	public void setPassword(String password) {
+		Password = password;
+	}
+	@Override
+	public String toString() {
+		return "UserRegistrationPojo [UserId=" + UserId + ", UserName=" + UserName + ", Address=" + Address + ", Email="
+				+ Email + ", Password=" + Password + "]";
+	}
+	
+	
+
+}

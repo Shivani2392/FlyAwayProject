@@ -1,0 +1,87 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    
+<%@page import="com.flightbooking.entities.FlightMasterPojo"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Flight results</title>
+</head>
+<body>
+
+<script>
+   
+   function CookieFunction(let source, let dest, let date, let time, let name, let id, let price) {
+	   
+	   document.setElementbyId();
+	   
+	   <%
+       Cookie cookies=new Cookie("Source",source);
+       Cookie cookied=new Cookie("Destination",dest);
+       Cookie cookiedd=new Cookie("Date",flightM.getsDate());
+       Cookie cookiet=new Cookie("flighttime",flightM.getFLIGHTTIME());
+       Cookie cookiefn=new Cookie("flightname",flightM.getFLIGHTNAME());
+       Cookie cookieFid=new Cookie("flightid",flightM.getsFlightId());
+       Cookie cookietp=new Cookie("flightprice",Double.toString(flightM.getTICKETP()));
+       
+       response.addCookie(cookies);
+       response.addCookie(cookied);
+       response.addCookie(cookiedd);
+       response.addCookie(cookiet);
+       response.addCookie(cookiefn);
+       response.addCookie(cookieFid);
+       response.addCookie(cookietp);
+
+	   %>
+	 }
+   
+   </script>
+
+<h3> Flight information: </h3>
+<table width="59%" border="1">
+    <thead>
+    <tr>
+        <td><h5>Source City</h5></td>
+        <td><h5>Destination City</h5></td>
+        <td><h5>Journey Date</h5></td>
+        <td><h5>Journey Time</h5></td>
+        <td><h5>Airline Name</h5></td>
+        <td><h5>Flight Id</h5></td>
+        <td><h5>Ticket Price (INR)</h5></td>
+        <td><h5>Booking Link</h5></td>
+    </tr>
+    </thead>
+    <tbody>
+    <%
+    
+    	int i = -1;
+        List<FlightMasterPojo> flights = (ArrayList<FlightMasterPojo>)request.getAttribute("flightPojos");
+        for(FlightMasterPojo flightM : flights) {
+            i++;
+            String sRadio = "<input type=\"radio\" id=\"" + i + "\" name=\"ticket\" onclick=\"CookieFunction(\"" + flightM.getSOURCENAME() + "\", \"" + flightM.getDESTINATION() + "\",\"" + flightM.getsDate() + "\",\"" + flightM.getFLIGHTTIME() + "\",\"" + flightM.getFLIGHTNAME() + "\",\"" + flightM.getsFlightId() + "\",\"" + flightM.getTICKETP() + "\")\">";
+            out.print(String.format("<tr>" +
+                    "<td>%s</td>" +
+                    "<td>%s</td>" +
+                    "<td>%s</td>" +
+                    "<td>%s</td>" +
+                    "<td>%s</td>" +
+                    "<td>%s</td>" +
+                    "<td>%f</td>" +
+                    "<td></td>" +
+                    "<td><a href=\"login.jsp\">Click here</a></td>" +
+               					   "</tr>",
+               					flightM.getSOURCENAME(),flightM.getDESTINATION(),flightM.getsDate(),
+               					flightM.getFLIGHTTIME(),flightM.getFLIGHTNAME(),flightM.getsFlightId(),
+               					flightM.getTICKETP()));                  
+        }
+
+        out.flush();
+    %>
+    </tbody>
+</table>
+
+</body>
+</html>

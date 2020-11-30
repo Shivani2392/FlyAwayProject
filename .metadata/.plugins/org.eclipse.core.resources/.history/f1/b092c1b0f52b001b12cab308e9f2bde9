@@ -1,0 +1,38 @@
+package com.flightbooking.controller;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class PaymentService
+ */
+public class PaymentService extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+    
+    public PaymentService() {
+        super();
+        
+    }
+
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		/*
+		 * String value5 = request.getParameter("Adult"); String value6 =
+		 * request.getParameter("Child"); double
+		 * sum=Double.parseDouble(value5)+Double.parseDouble(value6);
+		 * System.out.println(sum); double tax=8.0; String
+		 * price=request.getParameter("price"); double d=Double.parseDouble(price);
+		 * double total=sum*d; String priceofticket=Double.toString(d);
+		 * System.out.println(total);
+		 */
+		
+		
+			
+		
+	}
+	
+
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>HomePageServlet</servlet-name>
+  	<display-name>HomePageServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.flightbooking.controller.HomePageServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>LoginCredentialValidation</servlet-name>
+  	<display-name>LoginCredentialValidation</display-name>
+  	<description></description>
+  	<servlet-class>com.flightbooking.controller.LoginCredentialValidation</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>SignUpServlet</servlet-name>
+  	<display-name>SignUpServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.flightbooking.controller.SignUpServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>PaymentService</servlet-name>
+  	<display-name>PaymentService</display-name>
+  	<description></description>
+  	<servlet-class>com.flightbooking.controller.PaymentService</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>PaymentService1</servlet-name>
+  	<display-name>PaymentService1</display-name>
+  	<description>sdf</description>
+  	<servlet-class>com.flightbooking.controller.PaymentService</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>AdminLogin</servlet-name>
+  	<display-name>AdminLogin</display-name>
+  	<description></description>
+  	<servlet-class>com.flightbooking.controller.AdminLogin</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>AdminRegistrationServlet</servlet-name>
+  	<display-name>AdminRegistrationServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.flightbooking.controller.AdminRegistrationServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ResetPassowrd</servlet-name>
+  	<display-name>ResetPassowrd</display-name>
+  	<description></description>
+  	<servlet-class>com.flightbooking.controller.ResetPassowrd</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>HomePageServlet</servlet-name>
+  	<url-pattern>/HomePageServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>LoginCredentialValidation</servlet-name>
+  	<url-pattern>/LoginCredentialValidation</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>SignUpServlet</servlet-name>
+  	<url-pattern>/SignUpServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>PaymentService</servlet-name>
+  	<url-pattern>/PaymentService</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>PaymentService1</servlet-name>
+  	<url-pattern>/PaymentService1</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AdminLogin</servlet-name>
+  	<url-pattern>/AdminLogin</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AdminRegistrationServlet</servlet-name>
+  	<url-pattern>/AdminRegistrationServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ResetPassowrd</servlet-name>
+  	<url-pattern>/ResetPassowrd</url-pattern>
+  </servlet-mapping>
+</web-app>

@@ -1,0 +1,10 @@
+div{
+	width:4;
+	margin:auto;
+}
+
+input.button{
+	display: inline-block;
+	padding:1px
+	
+}

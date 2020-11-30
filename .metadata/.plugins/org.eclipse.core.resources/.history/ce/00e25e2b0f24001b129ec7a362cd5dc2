@@ -1,0 +1,49 @@
+package com.flightbooking.controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class HomePageServlet
+ */
+public class HomePageServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public HomePageServlet() {
+        super();
+        
+    }
+
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//String username = request.getParameter("username");
+      // String radio = request.getParameter("submit");
+		String value = request.getParameter("tripwayoneortwo");
+		String value1 = request.getParameter("From");
+		String value2 = request.getParameter("To");
+		String value3 = request.getParameter("Travel Date");
+		String value4 = request.getParameter("ReturnDate");
+		String value5 = request.getParameter("Adult");
+		String value6 = request.getParameter("Child");
+		System.out.println(value);
+		
+		PrintWriter pw=response.getWriter();
+       // System.out.println("username: " + username);
+        pw.println("in servlet");
+        
+ 
+        // do some processing here...
+        pw.close();
+         
+		doGet(request, response);
+	}
+
+}

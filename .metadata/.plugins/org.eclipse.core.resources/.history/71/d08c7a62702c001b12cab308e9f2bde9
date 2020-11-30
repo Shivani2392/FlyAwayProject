@@ -1,0 +1,52 @@
+package com.flightbooking.entities;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "ADMINDETAILS")
+public class AdminRegistrationEntity {
+
+	@Column(name = "ADMINNAME")
+	String ADMINNAME;
+	
+	@Column(name = "ADMINPSWD")
+	Integer ADMINPSWD;
+	
+	@Id
+	@Column(name = "ADMINEMAIL")
+	String ADMINEMAIL;
+
+	public AdminRegistrationEntity() {
+		super();
+	}
+
+	public String getADMINNAME() {
+		return ADMINNAME;
+	}
+
+	public void setADMINNAME(String aDMINNAME) {
+		ADMINNAME = aDMINNAME;
+	}
+
+	public Integer getADMINPSWD() {
+		return ADMINPSWD;
+	}
+
+	public void setADMINPSWD(Integer aDMINPSWD) {
+		ADMINPSWD = aDMINPSWD;
+	}
+
+	public String getADMINEMAIL() {
+		return ADMINEMAIL;
+	}
+
+	public void setADMINEMAIL(String aDMINEMAIL) {
+		ADMINEMAIL = aDMINEMAIL;
+	}
+	
+
+
+}

@@ -1,0 +1,68 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<style>
+.vertical-menu {
+  width: 200px;
+}
+
+.menu a {
+  background-color: #eee;
+  color: black;
+  display: block;
+  padding: 12px;
+  text-decoration: none;
+}
+
+.menu a:hover {
+  background-color: #ccc;
+}
+
+.menu a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+<title>AdminHome</title>
+</head>
+<body>
+
+<!--  <div class="Menu">
+  <a href="#" class="active">Home</a>
+  <a href="ResetPassword.jsp">ResetPassword</a>
+  <br>
+  <a href="MasterSourceDestinationlist.jsp">Available Source and Destination List</a>
+  <br>
+  <a href="MasterlistofAirlines.jsp">Master List of Airlines</a>
+  <br>
+  <a href="MasterListofFlights.jsp">Master List of Flights</a>
+</div> -->
+
+   <form action="LoginCredentialValidation" method="post">
+      <label for="uname"><b>Reset Password : </b></label><br>
+      <input type="text" placeholder="Enter Registered Email" name="uname">
+      <br><br>
+      <label for="psw"><b>Password : 	</b></label><br>
+      <input type="password" placeholder="Enter Password" name="psw">
+      <br><br><br>
+      <button type="submit">Login</button>
+
+      <input type="hidden" name="ticketp" value="<%=request.getParameter("ticketp")%>" />
+      <input type="hidden" name="source" value="<%=request.getParameter("source")%>" />
+      <input type="hidden" name="dest" value="<%=request.getParameter("dest")%>" />
+      <input type="hidden" name="date" value="<%=request.getParameter("date")%>" />
+      <input type="hidden" name="name" value="<%=request.getParameter("name")%>" />
+      <input type="hidden" name="time" value="<%=request.getParameter("time")%>" />
+      <input type="hidden" name="id" value="<%=request.getParameter("id")%>" />
+     
+   </form>
+
+
+
+
+
+</body>
+</html>

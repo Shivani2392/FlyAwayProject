@@ -1,0 +1,47 @@
+<%@page import="org.hibernate.Session"%>
+<%@page import="org.hibernate.SessionFactory"%>
+<%@page import="org.hibernate.cfg.Configuration"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Login</title>
+</head>
+
+<body>
+   <script>
+   
+   function signUpFunction() {
+	   
+	   let url = 'UserResgistrationPage.jsp?price=<%=request.getParameter("ticketp")%> + &source=<%=request.getParameter("source")%> +
+		   		 &dest=<%=request.getParameter("dest")%> + &name=<%=request.getParameter("name")%> + &id=<%=request.getParameter("id")%> +
+		   		 &time=<%=request.getParameter("time")%>';
+	   window.location = url; 
+	 }
+   
+   </script>
+   <form action="LoginCredentialValidation" method="post">
+      <label for="uname"><b>Username : </b></label><br>
+      <input type="text" placeholder="Enter Registered Email" name="uname" required>
+      <br><br>
+      <label for="psw"><b>Password : 	</b></label><br>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+      <br><br><br>
+      
+      <input type="hidden" name="ticketp" value="<%=request.getParameter("ticketp")%>" />
+      <input type="hidden" name="source" value="<%=request.getParameter("source")%>" />
+      <input type="hidden" name="dest" value="<%=request.getParameter("dest")%>" />
+      <input type="hidden" name="date" value="<%=request.getParameter("date")%>" />
+      <input type="hidden" name="name" value="<%=request.getParameter("name")%>" />
+      <input type="hidden" name="time" value="<%=request.getParameter("time")%>" />
+      <input type="hidden" name="id" value="<%=request.getParameter("id")%>" />
+
+      <button type="submit">Login</button>
+      <button onclick="signUpFunction()">SignUp</button>
+
+      
+   </form>
+</body>
+</html>

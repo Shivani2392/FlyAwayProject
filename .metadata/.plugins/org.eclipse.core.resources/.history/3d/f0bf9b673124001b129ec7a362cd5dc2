@@ -1,0 +1,26 @@
+package com.flightbooking.entities;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
+@Entity
+
+public class TraveldetailfrmUser {
+	
+	@Column(name = "SOURCE")
+	String SOURCE;
+
+	@Column(name = "DESTINATION")
+	String DESTINATION;
+
+	@Column(name = "FLIGHTDATETIME")
+	String FLIGHTDATETIME;	
+	
+	@Column(name = "WeeklyAvailableDay")
+	String WeeklyAvailableDay;
+	
+	@Column(name = "TICKETP")
+	String TICKETP;
+	
+
+}

@@ -1,0 +1,9 @@
+package lovetocode.SpringDemo;
+
+public class BaseballCoach {
+	
+	public String getDailyWorkout() {
+		return "spend 30 min daily for the practice";
+	}
+
+}

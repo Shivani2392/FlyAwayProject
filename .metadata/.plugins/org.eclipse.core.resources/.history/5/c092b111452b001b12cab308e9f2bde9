@@ -1,0 +1,71 @@
+package com.flightbooking.controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
+
+import com.flightbooking.entities.FLIGHTMASTER;
+
+/**
+ * Servlet implementation class LoginCredentialValidation
+ */
+public class LoginCredentialValidation extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public LoginCredentialValidation() {
+        super();
+        
+    }
+
+	
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String uname=request.getParameter("uname");
+		String pwd=request.getParameter("psw");
+		
+		//get connection from database
+		
+		Configuration config = new Configuration();
+		config.configure("hibernate.cfg.xml");
+		SessionFactory sessionFactory = config.addAnnotatedClass(com.flightbooking.entities.UserRegistration.class)
+				.buildSessionFactory();
+		Session session1 = sessionFactory.openSession();
+		
+		//Open transaction
+		
+		Transaction tx = session1.beginTransaction();
+		
+		//check whether user is already exist is database
+		PrintWriter pw = response.getWriter();	
+	List<String> username=	session1.createQuery("select u.UserName from UserRegistration u where u.UserName = '"+uname+"' AND u.Password='"+pwd + "'").getResultList();
+	if(username.size() == 0)
+	{
+		pw.println("UserName or Password is incorrect");		
+	}
+	else if(username.get(0).equals(uname))
+	{
+		request.getRequestDispatcher("BookFlight.jsp").forward(request, response);
+	}
+	else
+	{
+		pw.println("Not a registred user");
+	}
+	
+	sessionFactory.close();
+	}
+	 
+}

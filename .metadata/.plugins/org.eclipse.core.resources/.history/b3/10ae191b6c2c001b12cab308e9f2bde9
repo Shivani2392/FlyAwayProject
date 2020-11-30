@@ -1,0 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+  <form action="AdminLogin" method="post">
+      <label for="aname"><b>AdminName : </b></label><br>
+      <input type="text" placeholder="Enter Registered Email" name="uname">
+      <br><br>
+      <label for="psw"><b>Password : 	</b></label><br>
+      <input type="password" placeholder="Enter Password" name="psw">
+      <br><br><br>
+      <button type="submit">Login</button>
+</body>
+</html>

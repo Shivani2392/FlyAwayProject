@@ -1,0 +1,72 @@
+package com.flightbooking.controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import com.flightbooking.entities.UserRegistration;
+
+
+public class SignUpServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+  
+    public SignUpServlet() {
+        super();
+        
+    }
+
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String sFullName=request.getParameter("uname");
+		String sPhone=request.getParameter("phone");
+		Integer iPhone = (Integer) Integer.parseInt(sPhone);
+		String userPSWD=request.getParameter("psw");
+		String userMail=request.getParameter("mail");
+
+		PrintWriter pw3 = response.getWriter();
+		
+		
+		Configuration config = new Configuration();
+		config.configure("hibernate.cfg.xml");
+		SessionFactory sessionFactory = config.addAnnotatedClass(com.flightbooking.entities.UserRegistration.class)
+				.buildSessionFactory();
+		//get session object from session factory
+		Session session1 = sessionFactory.openSession();
+		
+		//Open transaction
+		
+		Transaction tx = session1.beginTransaction();
+		
+		//Register new User in DB
+		
+		List<String> emailArr=	session1.createQuery("select u.Email from UserRegistration u where u.Email = '"+userMail+"'").getResultList();
+		//String un=dbusername.toString();
+		if(emailArr!=null && emailArr.size() >= 1)
+		{
+			pw3.println("Email is already Exist!!");
+			request.getRequestDispatcher("Error.jsp").forward(request, response);			
+		}
+		else
+		{
+			UserRegistration userregistration=new UserRegistration(sFullName, iPhone, userMail, userPSWD);
+			session1.save(userregistration);
+			tx.commit();
+			pw3.println("User is Registered successfully, Please Book your Flight");
+			request.getRequestDispatcher("BookFlight.jsp").forward(request, response);			
+
+		}		
+	}
+
+}

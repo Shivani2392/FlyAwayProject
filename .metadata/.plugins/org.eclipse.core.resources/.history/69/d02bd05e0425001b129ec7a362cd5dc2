@@ -1,0 +1,113 @@
+package com.flightbooking.entities;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "FLIGHTMASTERDATA")
+public class FLIGHTMASTERDATA {
+	
+	
+	public FLIGHTMASTERDATA(String fLIGHTNAME, String sOURCE, String dESTINATION, String tICKETP, String fLIGHTID,
+			String fLIGHTSCHEDULE, String fLIGHTTIME) {
+		super();
+		FLIGHTNAME = fLIGHTNAME;
+		SOURCENAME = sOURCE;
+		DESTINATION = dESTINATION;
+		TICKETP = tICKETP;
+		FLIGHTID = fLIGHTID;
+		FLIGHTSCHEDULE = fLIGHTSCHEDULE;
+		FLIGHTTIME = fLIGHTTIME;
+	}
+
+	@Column(name="FLIGHTNAME")
+	String FLIGHTNAME;
+	
+	@Column(name = "SOURCENAME")
+	String SOURCENAME;
+
+	@Column(name = "DESTINATION")
+	String DESTINATION;
+	
+	@Column(name = "TICKETP")
+	String TICKETP;
+	
+	
+	@Id
+	@Column(name = "FLIGHTID")
+	String FLIGHTID;
+	
+
+	@Column(name = "FLIGHTSCHEDULE")
+	String FLIGHTSCHEDULE;
+	
+	@Column(name = "FLIGHTTIME")
+	String FLIGHTTIME;
+	
+	public FLIGHTMASTERDATA() {
+		
+	}
+
+	public String getFLIGHTID() {
+		return FLIGHTID;
+	}
+
+	public void setFLIGHTID(String fLIGHTID) {
+		FLIGHTID = fLIGHTID;
+	}
+	
+	
+	
+	public String getFLIGHTNAME() {
+		return FLIGHTNAME;
+	}
+
+	public void setFLIGHTNAME(String fLIGHTNAME) {
+		FLIGHTNAME = fLIGHTNAME;
+	}
+
+	public String getSOURCE() {
+		return SOURCENAME;
+	}
+
+	public void setSOURCE(String sOURCE) {
+		SOURCENAME = sOURCE;
+	}
+
+	public String getDESTINATION() {
+		return DESTINATION;
+	}
+
+	public void setDESTINATION(String dESTINATION) {
+		DESTINATION = dESTINATION;
+	}
+
+	public String getFLIGHTSCHEDULE() {
+		return FLIGHTSCHEDULE;
+	}
+
+	public void setFLIGHTSCHEDULE(String fLIGHTSCHEDULE) {
+		FLIGHTSCHEDULE = fLIGHTSCHEDULE;
+	}
+
+	public String getFLIGHTTIME() {
+		return FLIGHTTIME;
+	}
+
+	public void setFLIGHTTIME(String fLIGHTTIME) {
+		FLIGHTTIME = fLIGHTTIME;
+	}
+
+	public String getTICKETP() {
+		return TICKETP;
+	}
+
+	public void setTICKETP(String tICKETP) {
+		TICKETP = tICKETP;
+	}
+	
+	
+
+}

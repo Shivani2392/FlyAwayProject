@@ -1,0 +1,49 @@
+<%@page import="org.hibernate.Session"%>
+<%@page import="org.hibernate.SessionFactory"%>
+<%@page import="org.hibernate.cfg.Configuration"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+
+<body>
+   <form action="LoginCredentialValidation" method="post">
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" required>
+     
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+
+      <button type="submit">Login</button>
+   </form>
+
+  
+        <label for="Signup Option" ><p align="center">OR</p></label><br>
+        <label for="signup"><b>Click here to SignUp</b></label>
+        <a href=\"UserRegistration.jsp\"></a>
+        
+<%
+String uname=request.getParameter("uname");
+String pwd=request.getParameter("psw");
+ %>        		
+        		
+ <%if(uname.isEmpty() || pwd.isEmpty()) %>
+ <%out.println("UserName or Password is Empty");%> 
+ <%
+ Configuration confg=new Configuration();
+ confg.configure("hibernate.cfg.xml");
+ SessionFactory sessionFactory = confg.addAnnotatedClass(com.flightbooking.entities.FLIGHTMASTER.class)
+			.buildSessionFactory();
+	Session session1 = sessionFactory.openSession();
+ 
+ %>
+ 	
+
+
+
+</body>
+</html>

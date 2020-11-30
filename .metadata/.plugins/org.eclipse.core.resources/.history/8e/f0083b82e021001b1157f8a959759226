@@ -1,0 +1,14 @@
+package com.simplilearn.w.training;
+
+import java.util.Scanner;
+
+public class MenueDriven {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Please enter the opration you want to perform:"+"1. view student details 2.Add newStudent 3.UpdateStudent 4.delete student detail 5. search student");
+		
+
+	}
+
+}

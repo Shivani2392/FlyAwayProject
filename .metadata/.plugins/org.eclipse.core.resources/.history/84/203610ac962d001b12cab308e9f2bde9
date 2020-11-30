@@ -1,0 +1,58 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+
+<title>Booking SIte</title>
+</head>
+<body>
+<h1>Welcome to Airline Ticket Booking</h1>
+
+    
+<form action="HomePageServlet" method="post">
+
+
+
+<input type="radio" id="onewaytrip" name="tripwayoneortwo" value="onewaytrip">
+<label for="roundtrip">OneWay</label><br><br>
+<label for="Source">From</label>
+<input type="text" name="From">
+<label for="Destination">To</label>
+<input type="text" name="To">
+
+<label for="Dateofjourney">Depart</label>
+<input type="date" name="TravelDate" id="datepicker">
+
+
+<label for="Numberofpeopletobetravelled"></label>
+
+ <div class="dropdown">
+ 
+    <button class="dropbtn">Persons
+      <i class="fa fa-caret-down"></i>
+    </button><br><br>
+    <div class="dropdown-content">
+       <label for="Adultnumber">Adult</label>      
+       <button id="substract">-</button>
+       <input type="number" value="0" name="Adult">
+       <button id="add">+</button>
+       
+       <label for="Adultnumber">Children</label>      
+       <button id="substract">-</button>
+       <input type="number" value="0" name="Child">
+       <button id="add">+</button><br><br>
+    </div>
+    <script src="Script.js"></script>
+  </div>
+  
+  <div id="submit">
+    <input type="submit" name="Gotoserver" value="Go">
+  </div>
+
+</form>
+
+
+</body>
+</html>

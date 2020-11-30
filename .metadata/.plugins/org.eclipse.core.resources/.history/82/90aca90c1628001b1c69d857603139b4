@@ -1,0 +1,32 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    
+<%@page import="com.flightbooking.entities.FlightMasterPojo"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Flight results</title>
+</head>
+<body>
+<h3> Flight information: </h3>
+
+<% List<FlightMasterPojo> flights = (ArrayList<FlightMasterPojo>)request.getAttribute("flightPojos");
+ 
+    for(FlightMasterPojo flightM : flights)
+    {
+        out.print("Source: " + flightM.getSOURCENAME());
+        out.print("<br/>");
+        out.print("Name: " + flightM.getFLIGHTNAME());
+        out.print("<br/>");
+        out.print("Destination: " + flightM.getDESTINATION());
+        
+        out.print("<br/>");
+        out.print("<br/>");
+    }
+ 
+%>
+</body>
+</html>

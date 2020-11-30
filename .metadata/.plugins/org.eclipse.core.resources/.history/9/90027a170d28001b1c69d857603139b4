@@ -1,0 +1,7 @@
+package com.flightbooking.entities;
+
+public class FlightMasterPojo {
+
+	String sFlightId;
+	
+}

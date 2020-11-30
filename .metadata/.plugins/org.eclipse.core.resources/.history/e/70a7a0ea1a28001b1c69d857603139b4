@@ -1,0 +1,54 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    
+<%@page import="com.flightbooking.entities.FlightMasterPojo"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Flight results</title>
+</head>
+<body>
+<h3> Flight information: </h3>
+<table width="59%" border="1">
+    <thead>
+    <tr>
+        <td><h3>Source City</h3></td>
+        <td><h3>Destination City</h3></td>
+        <td><h3>Journey Date</h3></td>
+        <td><h3>Journey Time</h3></td>
+        <td><h3>Airline Name</h3></td>
+        <td><h3>Flight Id</h3></td>
+        <td><h3>Ticket Price (INR)</h3></td>
+        <td><h3>Booking Link</h3></td>
+    </tr>
+    </thead>
+    <tbody>
+    <%
+        List<FlightMasterPojo> flights = (ArrayList<FlightMasterPojo>)request.getAttribute("flightPojos");
+        for(FlightMasterPojo flightM : flights) {
+
+            out.print(String.format("<tr>" +
+                    "<td>%s</td>" +
+                    "<td>%s</td>" +
+                    "<td>%s</td>" +
+                    "<td>%s</td>" +
+                    "<td>%s</td>" +
+                    "<td>%s</td>" +
+                    "<td>%f</td>" +
+                    "<td><a href=\"login.jsp\">Click here</a></td>" +
+               					   "</tr>",
+               					flightM.getSOURCENAME(),flightM.getDESTINATION(),flightM.getsDate(),
+               					flightM.getFLIGHTTIME(),flightM.getFLIGHTNAME(),flightM.getsFlightId(),
+               					flightM.getTICKETP()));
+        }
+
+        out.flush();
+    %>
+    </tbody>
+</table>
+
+</body>
+</html>

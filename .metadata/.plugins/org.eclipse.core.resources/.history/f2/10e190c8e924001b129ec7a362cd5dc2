@@ -1,0 +1,99 @@
+package com.flightbooking.entities;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+
+public class TraveldetailfrmUser {
+	@Id
+	@Column(name = "FLIGHTID")
+	String FLIGHTID;
+	
+	@Column(name="FLIGHTNAME")
+	String FLIGHTNAME;
+	
+	
+	@Column(name = "SOURCE")
+	String SOURCE;
+
+	@Column(name = "DESTINATION")
+	String DESTINATION;
+
+	@Column(name = "FLIGHTDATETIME")
+	String FLIGHTDATETIME;	
+	
+	@Column(name = "WeeklyAvailableDay")
+	String WeeklyAvailableDay;
+	
+	@Column(name = "TICKETP")
+	String TICKETP;
+	
+
+	
+	public TraveldetailfrmUser() {
+		
+	}
+
+	public String getFLIGHTID() {
+		return FLIGHTID;
+	}
+
+	public void setFLIGHTID(String fLIGHTID) {
+		FLIGHTID = fLIGHTID;
+	}
+	
+	
+	
+	public String getFLIGHTNAME() {
+		return FLIGHTNAME;
+	}
+
+	public void setFLIGHTNAME(String fLIGHTNAME) {
+		FLIGHTNAME = fLIGHTNAME;
+	}
+
+	public String getSOURCE() {
+		return SOURCE;
+	}
+
+	public void setSOURCE(String sOURCE) {
+		SOURCE = sOURCE;
+	}
+
+	public String getDESTINATION() {
+		return DESTINATION;
+	}
+
+	public void setDESTINATION(String dESTINATION) {
+		DESTINATION = dESTINATION;
+	}
+
+	public String getFLIGHTDATETIME() {
+		return FLIGHTDATETIME;
+	}
+
+	public void setFLIGHTDATETIME(String fLIGHTDATETIME) {
+		FLIGHTDATETIME = fLIGHTDATETIME;
+	}
+
+	public String getWeeklyAvailableDay() {
+		return WeeklyAvailableDay;
+	}
+
+	public void setWeeklyAvailableDay(String weeklyAvailableDay) {
+		WeeklyAvailableDay = weeklyAvailableDay;
+	}
+
+	public String getTICKETP() {
+		return TICKETP;
+	}
+
+	public void setTICKETP(String tICKETP) {
+		TICKETP = tICKETP;
+	}
+	
+	
+
+}

@@ -1,0 +1,78 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet">
+<title>FlyAway</title>
+ <script type="text/javascript" lnaguage="javascript">
+ $(function()
+  {
+  $("#datepicker").datepicker(
+  {
+  showOn:"both",
+  buttonImage:"image.jpg",
+  dateFormat:"mm/dd/yyyy",
+  buttonImageOnly:false,
+  minDate:+0, //you do not want to show previous date.
+  maxDate:+0   // you do not want to show next day.
+  });
+  });
+ </script>
+</head>
+<body>
+<h1>Let's go on a trip</h1>
+
+    
+<form action="HomePageServlet" method="post">
+
+
+<input type="radio" id="roundtrip" name="tripwayoneortwo" value="roundtrip">
+<label for="roundtrip">RoundTrip</label>
+<input type="radio" id="onewaytrip" name="tripwayoneortwo" value="onewaytrip">
+<label for="roundtrip">OneWay</label><br><br>
+<label for="Source">From</label>
+<input type="text" name="From">
+<label for="Destination">To</label>
+<input type="text" name="To">
+
+<label for="Dateofjourney">Depart</label>
+<input type="date" name="TravelDate"  id="datepicker">
+
+ <input type="date" name="TravelDate" 
+        placeholder="dd/mm/yyyy" value=""
+        min="1997-01-01" max="2030-12-31">
+
+<label for="Dateofjourney">ReturnDate</label>
+<input type="date" name="ReturnDate" id="datepickerreturnjourney"><br><br>
+<label for="Numberofpeopletobetravelled"></label>
+
+ <div class="dropdown">
+ 
+    <button class="dropbtn">Persons
+      <i class="fa fa-caret-down"></i>
+    </button><br><br>
+    <div class="dropdown-content">
+       <label for="Adultnumber">Adult</label>      
+       <button id="substract">-</button>
+       <input type="number" value="0" name="Adult">
+       <button id="add">+</button>
+       
+       <label for="Adultnumber">Children</label>      
+       <button id="substract">-</button>
+       <input type="number" value="0" name="Child">
+       <button id="add">+</button><br><br>
+    </div>
+    <script src="Script.js"></script>
+  </div>
+  
+  <div id="submit">
+    <input type="submit" name="Gotoserver" value="Go">
+  </div>
+
+</form>
+
+
+</body>
+</html>

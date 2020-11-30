@@ -1,0 +1,48 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Flight Details</title>
+</head>
+<body>
+<h1>User registered successfully</h1>
+
+<h1>Confirm Personal and Flight Information</h1>
+
+
+<%
+Cookie cookie = null;
+Cookie[] cookies = null;
+cookies=request.getCookies();
+//get an array of cookies  
+if( cookies != null ) {
+            out.println("<h2>Confirm Personal Details and Flight Information</h2>");
+            
+            for (int i = 0; i < cookies.length; i++) {
+               cookie = cookies[i];
+               out.print("Name : " + cookie.getName( ) + ",  ");
+               out.print("Value: " + cookie.getValue( )+" <br/>");
+               out.print("Name : " + cookie.getName( ) + ",  ");
+               out.print("Value: " + cookie.getValue( )+" <br/>");
+               out.print("Name : " + cookie.getName( ) + ",  ");
+               out.print("Value: " + cookie.getValue( )+" <br/>");
+               out.print("Name : " + cookie.getName( ) + ",  ");
+               out.print("Value: " + cookie.getValue( )+" <br/>");
+               
+            }
+         } else {
+            out.println("<h2>No cookies founds</h2>");
+         }
+
+
+
+%>
+
+
+
+<h1>Proceed to Payment</h1>
+<input type="submit" value="Payment	" name="Payment"></input>
+</body>
+</html>

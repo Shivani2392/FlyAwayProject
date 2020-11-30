@@ -1,0 +1,10 @@
+package com.simplilearn.w.training;
+
+public class UpdateStudent {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
