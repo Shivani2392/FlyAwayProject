@@ -71,7 +71,7 @@ out.println((String)request.getSession().getAttribute("adult1"));
 out.println("No of Child selected : ");
 out.println((String)request.getSession().getAttribute("child1"));
 %>
-<h2>Note: Please take a screen shot of the Ticket details from here once the payment is successful you will directly receive the transaction successfull Message </h2>
+<h2>Note: Please take a screen shot of the Ticket details from here once the payment is successful you will directly receive the transaction succesfull Message </h2>
 <h2>Proceed to Payment</h2>
 <form action="Payement.jsp" >
 

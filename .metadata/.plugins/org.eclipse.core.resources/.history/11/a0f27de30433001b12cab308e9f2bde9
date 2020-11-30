@@ -47,7 +47,7 @@ public class PaymentService extends HttpServlet {
 		// build HTML code
         String htmlRespone = "<html><head></head><body>";
         htmlRespone += "<h2>Your Transaction is successful  "+"</h2>";     
-          
+        htmlRespone += "<a href=PrintReceipt.jsp>PrintReceipt"+"</a>";    
         htmlRespone += "</body></html>";
          
         // return response
